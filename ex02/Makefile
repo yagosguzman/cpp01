@@ -1,8 +1,8 @@
-NAME = brainz
+NAME = hi_brain
 
 CC = c++
-CFLAGS = -std=c++98 -Wall -Wextra -Werror -MMD
-SRC_FILES = Zombie.cpp newZombie.cpp randomChump.cpp main.cpp
+CFLAGS = -std=c++98 -Wall -Wextra -Werror -MMD -g -fsanitize=address
+SRC_FILES = main.cpp
 OBJ_DIR = objs/
 OBJ_FILES = $(SRC_FILES:.cpp=.o)
 OBJS = $(addprefix $(OBJ_DIR), $(OBJ_FILES))
