@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Harl.hpp                                           :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysanchez <ysanchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/07 20:43:19 by ysanchez          #+#    #+#             */
-/*   Updated: 2024/08/08 19:10:26 by ysanchez         ###   ########.fr       */
+/*   Created: 2024/08/08 18:37:48 by ysanchez          #+#    #+#             */
+/*   Updated: 2024/08/08 19:09:47 by ysanchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HARL_HPP
-# define HARL_HPP
+#include "Harl.hpp"
 
-#include <string>
-#include <iostream>
-
-class Harl
+int main(void)
 {
-private:
-	void	debug(void);
-	void	info(void);
-	void	warning(void);
-	void	error(void);
+	Harl robot;
 
-public:
-			Harl(void);
-			~Harl(void);
-	void	complain(std::string level);
-};
-
-#endif
+	robot.complain("DEBUG");
+	robot.complain("INFO");
+	robot.complain("WARNING");
+	robot.complain("ERROR");
+	robot.complain("NOEXISTE");
+	return (0);
+}
