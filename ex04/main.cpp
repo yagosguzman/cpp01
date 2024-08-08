@@ -6,13 +6,14 @@
 /*   By: ysanchez <ysanchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 20:17:09 by ysanchez          #+#    #+#             */
-/*   Updated: 2024/08/07 20:37:20 by ysanchez         ###   ########.fr       */
+/*   Updated: 2024/08/08 20:06:47 by ysanchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string>
 #include <fstream>
 #include <iostream>
+#include <sstream>
 
 int	replace_strings(const std::string& file, const std::string& s1, const std::string& s2){
 	
@@ -21,11 +22,18 @@ int	replace_strings(const std::string& file, const std::string& s1, const std::s
 			std::cout  << "Problem opening the file" << std::endl;
 			return (1);
 		}
-	/*Leemos del input desde el inicio hasta el EOF y lo guardamos en content*/
-	std::string content((std::istreambuf_iterator<char>(input)), std::istreambuf_iterator<char>());
+	std::stringstream buf;
+	std::string line;
+	while (std::getline(input, line))
+		buf << line << "\n";
 	input.close();
+	std::string content = buf.str();
 	std::string::size_type i = 0;
-	while ((i = content.find(s1, i)) != std::string::npos){
+	while (1)
+	{
+		i = content.find(s1, i);
+		if (i == std::string::npos)
+			break;
 		content.erase(i, s1.size());
 		content.insert(i, s2);
 		i += s2.size();
